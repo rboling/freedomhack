@@ -1,0 +1,63 @@
+steps for bootstrap:
+
+	rails generate bootstrap:install static
+
+	rails g bootstrap:layout [LAYOUT_NAME] [*fixed or fluid]
+
+	resource:
+
+	rails g bootstrap:themed [RESOURCE_NAME]
+
+rails g scaffold Post title:string description:text
+rake db:migrate
+rails g bootstrap:themed Posts
+
+Authlogic:
+
+in models:
+
+acts_as_authentic
+
+layouts/application.html.erb:
+
+<div id="user_nav">
+  <% if current_user %>
+    <%= link_to "Edit Profile", edit_user_path(:current_user) %> |
+    <%= link_to "Logout", logout_path %>
+  <% else %>
+    <%= link_to "Register", new_user_path %> |
+    <%= link_to "Login", login_path %>
+  <% end %>
+</div>
+
+
+user_session/new.html.erb:
+
+<% title "Login" %>
+
+<% form_for @user_session do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :username %><br />
+    <%= f.text_field :username %>
+  </p>
+  <p>
+    <%= f.label :password %><br />
+    <%= f.password_field :password %>
+  </p>
+  <p><%= f.submit "Submit" %></p>
+<% end %>
+
+will take you to the appropriate fields in the migration...etc:
+
+https://github.com/ryanb/railscasts-episodes/tree/master/episode-160/
+
+ mobile rails:
+
+ http://stackoverflow.com/questions/4075610/can-we-use-ruby-on-rails-to-develop-a-mobile-app
+
+ http://en.oreilly.com/rails2010/public/schedule/detail/14136
+
+ Twilio Images:
+
+ http://www.twilio.com/blog/2013/01/sending-images-via-sms-with-filepicker-and-twilio.html
